@@ -7,6 +7,7 @@ import FrozenBackground from "@/components/FrozenBackground";
 import ScrollProgress from "@/components/ScrollProgress";
 import MagneticTargets from "@/components/MagneticTargets";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 import SeasonProvider, {
   SEASON_BOOT_SCRIPT,
@@ -94,6 +95,7 @@ export default function RootLayout({
           <ScrollProgress />
 
           {children}
+          <Analytics />
           <SpeedInsights />
 
           <CustomCursor />

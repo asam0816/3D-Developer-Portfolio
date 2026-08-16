@@ -7,6 +7,11 @@ import {
   type ReactNode,
 } from "react";
 
+/*
+ * English-only language system.
+ *
+ * Spanish has been completely removed.
+ */
 export type Lang = "en";
 
 type LanguageContext = {
@@ -18,12 +23,7 @@ type LanguageContext = {
 const Ctx = createContext<LanguageContext | null>(null);
 
 /*
- * English-only translations.
- *
- * The language system is kept only as a compatibility layer for any
- * component that may still call useLanguage().
- *
- * There is NO Spanish language and NO language selection.
+ * English translations.
  */
 const translations: Record<string, string> = {
   "header.availability": "Open to Opportunities",
@@ -61,45 +61,57 @@ const translations: Record<string, string> = {
 
 /*
  * Keyboard skill descriptions.
- *
- * Unknown keys fall back to the key name rather than returning
- * an object or causing a ReactNode TypeScript error.
  */
 const keyboardTaglines: Record<string, string> = {
   html: "Markup",
   html5: "Markup",
+
   css: "Styling",
   css3: "Styling",
+
   javascript: "Programming",
   typescript: "Typed JavaScript",
+
   react: "UI Library",
   reactjs: "UI Library",
+
   nextjs: "React Framework",
+
   nodejs: "Runtime",
   node: "Runtime",
+
   expressjs: "Backend Framework",
   express: "Backend Framework",
+
   mongodb: "Database",
   mysql: "Database",
   postgresql: "Database",
+
   tailwindcss: "CSS Framework",
   tailwind: "CSS Framework",
+
   git: "Version Control",
   github: "Code Hosting",
+
   python: "Programming",
   java: "Programming",
+
   figma: "UI/UX Design",
 };
 
 function getTranslation(path: string): string {
-  if (translations[path]) {
-    return translations[path];
+  const directTranslation = translations[path];
+
+  if (directTranslation) {
+    return directTranslation;
   }
 
   const prefix = "keyboard.taglines.";
 
   if (path.startsWith(prefix)) {
-    const slug = path.slice(prefix.length).toLowerCase();
+    const slug = path
+      .slice(prefix.length)
+      .toLowerCase();
 
     return (
       keyboardTaglines[slug] ??
@@ -108,14 +120,17 @@ function getTranslation(path: string): string {
   }
 
   /*
-   * If an old component requests an unknown translation,
-   * return the path instead of returning an object.
-   *
-   * This keeps the return type strictly string.
+   * Unknown translation keys safely return the key itself.
    */
   return path;
 }
 
+/*
+ * Bootstrap script.
+ *
+ * Forces the entire website to English and removes
+ * the old language preference from localStorage.
+ */
 export const LANG_BOOT_SCRIPT = `
 (function () {
   try {
@@ -125,6 +140,9 @@ export const LANG_BOOT_SCRIPT = `
 })();
 `;
 
+/*
+ * English-only LanguageProvider.
+ */
 export function LanguageProvider({
   children,
 }: {
@@ -160,6 +178,12 @@ export function LanguageProvider({
 
 export default LanguageProvider;
 
+/*
+ * Language hook.
+ *
+ * Components can safely call useLanguage() even if they are
+ * rendered outside the provider.
+ */
 export function useLanguage(): LanguageContext {
   const ctx = useContext(Ctx);
 

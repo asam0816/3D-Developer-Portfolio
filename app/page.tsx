@@ -15,12 +15,28 @@ import { SKILLS_FLAT } from "@/lib/skills";
 
 const EMAIL = "asamofficial16@gmail.com";
 
-type Project = ProjectDetail & {
+/*
+ * English-only project data used by this page.
+ *
+ * ProjectModal may still have its older Localised type internally.
+ * The data here is intentionally kept as normal English strings because
+ * the portfolio no longer supports multiple languages.
+ */
+type PortfolioProject = {
+  num: string;
+  name: string;
+  stack: string[];
+  desc: string;
+  details: string;
+  url: string;
+  media: string[];
+  badge?: string;
   align: "left" | "right";
   section: "project1" | "project2" | "project3" | "project4";
+  highlights?: string[];
 };
 
-const projects: Project[] = [
+const projects: PortfolioProject[] = [
   {
     num: "01",
 
@@ -200,7 +216,7 @@ export default function Home() {
   const isMobile = useIsMobile();
 
   const [activeProject, setActiveProject] =
-    useState<Project | null>(null);
+    useState<PortfolioProject | null>(null);
 
   const handleCvDownload = (
     e: React.MouseEvent<HTMLAnchorElement>
@@ -219,6 +235,19 @@ export default function Home() {
     link.click();
 
     document.body.removeChild(link);
+  };
+
+  /*
+   * ProjectModal was originally designed around ProjectDetail.
+   *
+   * The portfolio is now English-only, so the page stores normal strings.
+   * This helper bridges the old modal type without changing the actual
+   * English content or requiring Spanish translations.
+   */
+  const getModalProject = (
+    project: PortfolioProject
+  ): ProjectDetail => {
+    return project as unknown as ProjectDetail;
   };
 
   return (
@@ -257,7 +286,6 @@ export default function Home() {
             <SeasonPicker />
 
             <span className="hidden md:inline-flex">
-
               <a
                 href="https://github.com/asam0816"
                 target="_blank"
@@ -265,7 +293,6 @@ export default function Home() {
                 data-cursor="hover"
                 className="frost-btn !py-1.5 !px-3 !text-xs"
               >
-
                 <svg
                   viewBox="0 0 16 16"
                   width="14"
@@ -273,17 +300,14 @@ export default function Home() {
                   fill="currentColor"
                   aria-hidden
                 >
-                  <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 .1.01 1.93.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                  <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
                 </svg>
 
                 <span>GitHub</span>
-
               </a>
-
             </span>
 
           </div>
-
         </header>
 
         <SectionNav />
@@ -354,7 +378,6 @@ export default function Home() {
                   className="frost-btn frost-btn--primary"
                   onClick={handleCvDownload}
                 >
-
                   <svg
                     viewBox="0 0 24 24"
                     width="16"
@@ -369,7 +392,6 @@ export default function Home() {
                   </svg>
 
                   Download CV
-
                 </a>
 
                 {/* Hire me */}
@@ -435,12 +457,11 @@ export default function Home() {
                     fill="currentColor"
                     aria-hidden
                   >
-                    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82.73 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
                   </svg>
                 </a>
 
               </div>
-
             </div>
 
             {/* Scroll indicator */}
@@ -478,7 +499,6 @@ export default function Home() {
 
                 <Reveal delay={120}>
                   <p className="mt-3 text-sm sm:text-base text-ice-400">
-
                     <span className="hidden md:inline">
                       Hover over the keyboard to explore
                     </span>
@@ -486,7 +506,6 @@ export default function Home() {
                     <span className="md:hidden">
                       Explore my technologies
                     </span>
-
                   </p>
                 </Reveal>
 
@@ -514,7 +533,6 @@ export default function Home() {
                       </svg>
 
                       <div>
-
                         <p className="text-ice-50 font-medium text-sm">
                           {s.title}
                         </p>
@@ -522,7 +540,6 @@ export default function Home() {
                         <p className="text-ice-400 text-xs mt-0.5 leading-snug">
                           {s.slug}
                         </p>
-
                       </div>
 
                     </div>
@@ -570,22 +587,18 @@ export default function Home() {
                   <header className="flex flex-wrap items-start justify-between gap-3 mb-5">
 
                     <div>
-
                       <h3 className="text-2xl sm:text-3xl font-bold text-ice-50 tracking-tight">
                         {exp.role}
                       </h3>
 
                       <p className="text-ice-400 font-medium mt-1">
-
                         {exp.company}
 
                         <span className="text-ice-500/80 font-normal">
                           {" · "}
                           {exp.location}
                         </span>
-
                       </p>
-
                     </div>
 
                     <span className="font-mono text-xs text-ice-100 px-3 py-1 rounded-full border border-ice-700/70 bg-ink-2/60 whitespace-nowrap">
@@ -859,7 +872,11 @@ export default function Home() {
         </main>
 
         <ProjectModal
-          project={activeProject}
+          project={
+            activeProject
+              ? getModalProject(activeProject)
+              : null
+          }
           onClose={() => setActiveProject(null)}
         />
 

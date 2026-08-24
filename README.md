@@ -1,21 +1,21 @@
 <div align="center">
 
-  <!-- Header Banner -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=230&section=header&text=3D%20Developer%20Portfolio&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Mohamed%20Asam%20%7C%20Software%20Engineer%20%7C%20Creative%20Technologist&descAlignY=58&descSize=16" width="100%" alt="3D Developer Portfolio Header" />
+  <!-- Rectangular Dark Navy Gradient Header Banner -->
+  <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0b0f19,50:111827,100:0b0f19&height=220&section=header&text=⚡%203D%20Developer%20Portfolio&fontSize=42&fontColor=38bdf8&fontAlign=50&fontAlignY=42&desc=Mohamed%20Asam%20%7C%20Software%20Engineer%20%7C%20Creative%20Technologist&descAlignY=62&descSize=16&descColor=7dd3fc" width="100%" alt="3D Developer Portfolio Header" />
 
-  <!-- Animated Typing Showcase -->
+  <!-- High-Performance Cyan Monospace Subtitle -->
   <a href="https://asamofficial-portfolio.vercel.app/">
-    <img src="https://readme-typing-svg.demolab.com/?font=Space+Grotesk&weight=600&size=19&pause=1100&color=00F5D4&center=true&vCenter=true&width=800&lines=Interactive+Web3D+%26+Creative+Development;Next.js+16+%7C+React+19+%7C+TypeScript+5;React+Three+Fiber+%7C+Three.js+%7C+Shader+Art;Dynamic+Seasonal+Themes+%26+Smooth+60FPS;Crafted+with+Precision+by+Mohamed+Asam" alt="Typing Subtitle" />
+    <img src="https://readme-typing-svg.demolab.com/?font=JetBrains+Mono&size=18&weight=600&pause=1100&color=38BDF8&center=true&vCenter=true&width=800&lines=Interactive+Web3D+%26+Creative+Development;Next.js+16+%7C+React+19+%7C+TypeScript+5;React+Three+Fiber+%7C+Three.js+%7C+Shader+Art;Dynamic+Seasonal+Themes+%26+Smooth+60FPS;Crafted+with+Precision+by+Mohamed+Asam" alt="Typing Subtitle" />
   </a>
 
   <br/><br/>
 
   <!-- Action Buttons -->
   <a href="https://asamofficial-portfolio.vercel.app/">
-    <img src="https://img.shields.io/badge/Live_Demo-Explore_World-00F5D4?style=for-the-badge&labelColor=090D16&logoColor=00F5D4" alt="Live Portfolio" />
+    <img src="https://img.shields.io/badge/Live_Demo-Explore_World-0284C7?style=for-the-badge&logoColor=white" alt="Live Portfolio" />
   </a>
   <a href="https://github.com/asam0816/3D-Developer-Portfolio">
-    <img src="https://img.shields.io/badge/Source_Code-GitHub-7928CA?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
+    <img src="https://img.shields.io/badge/Source_Code-GitHub-6366F1?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" />
   </a>
   <a href="https://www.linkedin.com/in/asamofficial16/">
     <img src="https://img.shields.io/badge/Connect-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Connection" />
@@ -23,21 +23,21 @@
 
   <br/><br/>
 
-  <!-- Core Tech Stack -->
+  <!-- Tech Stack -->
   <img src="https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
   <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/TypeScript_5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Three.js-WebGL-049EF4?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Three.js" />
   <img src="https://img.shields.io/badge/R3F-3D_Canvas-FF4081?style=for-the-badge&logo=react&logoColor=white" alt="React Three Fiber" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-Modern_UI-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
 
   <br/><br/>
 
-  <!-- Status & Metadata Chips -->
+  <!-- Metadata Status Badges -->
   <img src="https://img.shields.io/badge/Deployment-Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Deployment" />
-  <img src="https://img.shields.io/badge/Experience-Interactive_3D-00F5D4?style=flat-square" alt="3D Experience" />
+  <img src="https://img.shields.io/badge/Experience-Interactive_3D-0284C7?style=flat-square" alt="3D Experience" />
   <img src="https://img.shields.io/badge/Performance-60_FPS_Optimized-22C55E?style=flat-square&logo=speedtest&logoColor=white" alt="Performance" />
-  <img src="https://img.shields.io/badge/Themes-Dynamic_4_Seasons-9333EA?style=flat-square" alt="Dynamic Themes" />
+  <img src="https://img.shields.io/badge/Themes-Dynamic_4_Seasons-8B5CF6?style=flat-square" alt="Dynamic Themes" />
   <img src="https://img.shields.io/badge/License-MIT-F59E0B?style=flat-square" alt="License" />
 
 </div>
